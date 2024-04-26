@@ -1,13 +1,10 @@
 use std::str::FromStr;
+
 use ore::{self, state::Proof, utils::AccountDeserialize};
 use solana_program::pubkey::Pubkey;
-use solana_sdk::{
-    instruction::Instruction,
-    compute_budget::ComputeBudgetInstruction,
-    signature::Signer,
-    signer::keypair::Keypair
-};
-use crate::{cu_limits::CU_LIMIT_CLAIM, utils::proof_pubkey, utils::get_proof, Miner};
+use solana_sdk::{compute_budget::ComputeBudgetInstruction, signature::Signer};
+
+use crate::{cu_limits::CU_LIMIT_CLAIM, utils::proof_pubkey, Miner};
 
 impl Miner {
     pub async fn claim(&self, beneficiary: Option<String>, amount: Option<f64>) {

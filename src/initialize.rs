@@ -1,4 +1,5 @@
 use ore::TREASURY_ADDRESS;
+
 use solana_sdk::signature::Signer;
 
 use crate::Miner;
