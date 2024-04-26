@@ -24,7 +24,7 @@ use solana_sdk::{
     signature::{read_keypair_file, Keypair},
 };
 
-const WALLETS: u64 = 5;
+const WALLETS: u64 = 3;
 
 struct Miner {
     pub keypair_filepath1: Option<String>,

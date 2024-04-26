@@ -200,10 +200,10 @@ impl Miner {
                 let signer1 = self.signer_by_number(1);
                 let signer2 = self.signer_by_number(2);
                 let signer3 = self.signer_by_number(3);
-                let signer4 = self.signer_by_number(4);
-                let signer5 = self.signer_by_number(5);
+                // let signer4 = self.signer_by_number(4);
+                // let signer5 = self.signer_by_number(5);
 
-                let signers = vec![&signer1, &signer2, &signer3, &signer4, &signer5];
+                let signers = vec![&signer1, &signer2, &signer3];
 
                 match self
                     .send_and_confirm(&mine_ixs.into_boxed_slice(), false, false, signers)
