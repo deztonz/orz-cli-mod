@@ -31,7 +31,7 @@ impl Miner {
         let mut total_rewards_amount = 0;
         let mut signerws = vec![1];
 
-        for w in 1 .. 6 {
+        for w in 1 .. 4 {
             let signer = self.signer_by_number(w);
             let pubkey = signer.pubkey();    
             let proof = get_proof(&self.rpc_client, pubkey).await;
@@ -41,7 +41,7 @@ impl Miner {
             }
             else {
                 has_ore_rewards = true;
-                println!("{} ORE to claim on address {}", rewardtotal, pubkey);
+                println!("{} ORZ to claim on address {}", rewardtotal, pubkey);
                 let amount = if let Some(amount) = amount {
                     (amount * 10f64.powf(ore::TOKEN_DECIMALS as f64)) as u64
                 } else {
@@ -71,15 +71,13 @@ impl Miner {
             println!("Submitting claim transaction...");
             let signer2 = self.signer_by_number(2);
             let signer3 = self.signer_by_number(3);
-            let signer4 = self.signer_by_number(4);
-            let signer5 = self.signer_by_number(5);            
+      
             
             let mut signers = vec![&signer1];
             for w in 0..signerws.len() {
                 if signerws[w] == 2 { signers.push(&signer2); }
                 if signerws[w] == 3 { signers.push(&signer3); }
-                if signerws[w] == 4 { signers.push(&signer4); }
-                if signerws[w] == 5 { signers.push(&signer5); }
+
             }
 
             match self

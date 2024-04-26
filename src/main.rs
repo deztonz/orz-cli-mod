@@ -30,8 +30,8 @@ struct Miner {
     pub keypair_filepath1: Option<String>,
     pub keypair_filepath2: Option<String>,
     pub keypair_filepath3: Option<String>,
-    pub keypair_filepath4: Option<String>,
-    pub keypair_filepath5: Option<String>,
+    // pub keypair_filepath4: Option<String>,
+    // pub keypair_filepath5: Option<String>,
     pub priority_fee: u64,
     pub rpc_client: Arc<RpcClient>,
 }
@@ -80,21 +80,21 @@ struct Args {
     )]
     keypair3: Option<String>,
     
-    #[arg(
-        long,
-        value_name = "KEYPAIR_FILEPATH4",
-        help = "Filepath to keypair 4 to use",
-        global = true
-    )]
-    keypair4: Option<String>,
+    // #[arg(
+    //     long,
+    //     value_name = "KEYPAIR_FILEPATH4",
+    //     help = "Filepath to keypair 4 to use",
+    //     global = true
+    // )]
+    // keypair4: Option<String>,
 
-    #[arg(
-        long,
-        value_name = "KEYPAIR_FILEPATH5",
-        help = "Filepath to keypair 5 to use",
-        global = true
-    )]
-    keypair5: Option<String>,
+    // #[arg(
+    //     long,
+    //     value_name = "KEYPAIR_FILEPATH5",
+    //     help = "Filepath to keypair 5 to use",
+    //     global = true
+    // )]
+    // keypair5: Option<String>,
 
     #[arg(
         long,
@@ -233,8 +233,8 @@ async fn main() {
     let default_keypair1 = args.keypair1.unwrap_or(cli_config.keypair_path.clone());
     let default_keypair2 = args.keypair2.unwrap_or("".to_string());
     let default_keypair3 = args.keypair3.unwrap_or("".to_string());
-    let default_keypair4 = args.keypair4.unwrap_or("".to_string());
-    let default_keypair5 = args.keypair5.unwrap_or("".to_string());
+    // let default_keypair4 = args.keypair4.unwrap_or("".to_string());
+    // let default_keypair5 = args.keypair5.unwrap_or("".to_string());
 
     let rpc_client = RpcClient::new_with_commitment(cluster, CommitmentConfig::confirmed());
 
@@ -244,8 +244,8 @@ async fn main() {
         Some(default_keypair1),
         Some(default_keypair2),
         Some(default_keypair3),
-        Some(default_keypair4),
-        Some(default_keypair5),
+        // Some(default_keypair4),
+        // Some(default_keypair5),
     ));
 
     // Execute user command.
@@ -294,16 +294,16 @@ impl Miner {
         keypair_filepath1: Option<String>, 
         keypair_filepath2: Option<String>, 
         keypair_filepath3: Option<String>,
-        keypair_filepath4: Option<String>,
-        keypair_filepath5: Option<String>,
+        // keypair_filepath4: Option<String>,
+        // keypair_filepath5: Option<String>,
     ) -> Self {
         Self {
             rpc_client,
             keypair_filepath1,
             keypair_filepath2,
             keypair_filepath3,
-            keypair_filepath4,
-            keypair_filepath5,
+            // keypair_filepath4,
+            // keypair_filepath5,
             priority_fee,
         }
     }
@@ -320,12 +320,12 @@ impl Miner {
         if keypair_number == 3 {
             keypair_filepath = &self.keypair_filepath3;
         }
-        if keypair_number == 4 {
-            keypair_filepath = &self.keypair_filepath4;
-        }
-        if keypair_number == 5 {
-            keypair_filepath = &self.keypair_filepath5;
-        }
+        // if keypair_number == 4 {
+        //     keypair_filepath = &self.keypair_filepath4;
+        // }
+        // if keypair_number == 5 {
+        //     keypair_filepath = &self.keypair_filepath5;
+        // }
 
         match keypair_filepath.clone() {
             Some(filepath) => read_keypair_file(filepath).unwrap(),
