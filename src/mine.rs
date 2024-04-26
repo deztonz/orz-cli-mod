@@ -36,7 +36,7 @@ struct SharedNextHashRangeData {
 }        
 */
 
-const WALLETS: u64 = 5;
+const WALLETS: u64 = 3;
 
 impl Miner {
     pub async fn mine(&self, threads: u64) {
